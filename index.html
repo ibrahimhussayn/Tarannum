@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Tarannum ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .container {
+        margin-top: 150px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 42px;
+        color: #333;
+    }
+
+    p {
+        font-size: 22px;
+        color: #444;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .btn {
+        padding: 12px 28px;
+        font-size: 18px;
+        margin: 20px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #yes { background-color: #4CAF50; color: white; }
+    #no { background-color: #f44336; color: white; position: absolute; }
+
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(-800px);}
+    }
+
+    .firework {
+        position: absolute;
+        font-size: 30px;
+        animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+        0% {transform: scale(0);}
+        100% {transform: scale(2); opacity: 0;}
+    }
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+    <h1>Tarannum ❤️</h1>
+    <p>
+        I wanted to tell you something for a long time...<br><br>
+        You are very special to me, and every time I talk to you,
+        my day becomes better.<br><br>
+        So I have a question for you...
+    </p>
+    <button class="btn" onclick="showQuestion()">Continue</button>
+</div>
+
+<script>
+function showQuestion() {
+    document.getElementById("content").innerHTML = `
+        <h1>Will you go on a date with me? ❤️</h1>
+        <button class="btn" id="yes" onclick="yesClicked()">Yes</button>
+        <button class="btn" id="no" onmouseover="moveNo()">No</button>
+    `;
+}
+
+// Moving No button
+function moveNo() {
+    var button = document.getElementById("no");
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+// After Yes clicked
+function yesClicked() {
+    document.body.innerHTML = "<h1 style='margin-top:200px;'>You made my day Tarannum ❤️</h1>";
+    fireworks();
+}
+
+// Fireworks effect
+function fireworks() {
+    setInterval(function() {
+        var fw = document.createElement("div");
+        fw.className = "firework";
+        fw.innerHTML = "✨";
+        fw.style.left = Math.random() * window.innerWidth + "px";
+        fw.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(fw);
+
+        setTimeout(() => fw.remove(), 1000);
+    }, 200);
+}
+
+// Floating hearts
+setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 6000);
+}, 500);
+</script>
+
+</body>
+</html>
