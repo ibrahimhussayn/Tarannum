@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Tarannum ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .container {
+        margin-top: 120px;
+        padding: 20px;
+        animation: fadeIn 2s;
+    }
+
+    h1 {
+        font-size: 40px;
+        color: #333;
+        animation: slideDown 1.5s;
+    }
+
+    #text {
+        font-size: 24px;
+        color: #444;
+        width: 70%;
+        margin: auto;
+        min-height: 80px;
+    }
+
+    .btn {
+        padding: 12px 28px;
+        font-size: 18px;
+        margin: 20px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yes {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+    }
+
+    #no {
+        background-color: #f44336;
+        color: white;
+        position: absolute;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes slideDown {
+        from {transform: translateY(-50px); opacity: 0;}
+        to {transform: translateY(0); opacity: 1;}
+    }
+
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(-800px);}
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Tarannum ❤️</h1>
+    <p id="text"></p>
+    <button class="btn" id="yes" onclick="yesClicked()">Yes</button>
+    <button class="btn" id="no" onclick="noClicked()">No</button>
+</div>
+
+<script>
+var message = "I know we just started knowing each other, but I really enjoy talking to you. You seem like a very kind and special person, and I would love to know you more and spend some time with you. So I wanted to ask you something... Will you go on a date with me?";
+var i = 0;
+var noCount = 0;
+
+// Typing animation
+function typing() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typing, 40);
+    }
+}
+typing();
+
+// Yes clicked
+function yesClicked() {
+    document.body.innerHTML = "<h1 style='margin-top:200px;'>You made my day Tarannum ❤️</h1>";
+}
+
+// No clicked
+function noClicked() {
+    noCount++;
+
+    var button = document.getElementById("no");
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+
+    if(noCount >= 3) {
+        alert("Please select Yes ❤️");
+    }
+}
+
+// Floating hearts
+setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 6000);
+}, 500);
+</script>
+
+</body>
+</html>
